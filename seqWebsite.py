@@ -5,6 +5,8 @@ import ccxt
 okex = ccxt.okex({'type': 'futures'})
 markets = okex.fetch_markets()
 
+st.header('THE BEST ANALYTICAL WEBSITE EVER')
+
 
 def get_tickers():
     fut_weekly_list = list(filter(lambda i: i['type'] == 'futures' and
@@ -75,4 +77,5 @@ def spreads():
     return pd.DataFrame.from_dict(dict, orient='index')
 
 
-st.table(spreads())
+spread = spreads()
+st.table(spread.style.highlight_max())
