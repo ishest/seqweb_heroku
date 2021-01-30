@@ -71,11 +71,15 @@ def spreads():
 
         biWW = (prices[i].loc['bi-weekly'] / prices[i].loc['weekly'] - 1) * 100
 
-        dict[i] = {'biQ-Q': round(biQQ, 2), 'BiQ-BW': round(biQBW, 2), 'BiQ-W': round(biQW, 2),
-                   'Q-BW': round(QBW, 2), 'Q-W': round(QW, 2), 'biW-W': round(biWW, 2)}
+        dict[i] = {'biQ-Q': round(biQQ, 2), 'biQ-BW': round(biQBW, 2), 'biQ-W': round(biQW, 2), 'biW-W_RollOver': round(biWW, 2),
+                   'Q-BW': round(QBW, 2), 'Q-W': round(QW, 2)}
 
     return pd.DataFrame.from_dict(dict, orient='index')
 
 
 spread = spreads()
+btc_spread = pd.DataFrame(spread.loc['BTC']).T
+
+st.table(btc_spread)
+
 st.table(spread.style.highlight_max())
