@@ -1,9 +1,13 @@
 import streamlit as st
 import pandas as pd
 import ccxt
+import time
 
 okex = ccxt.okex({'type': 'futures'})
 markets = okex.fetch_markets()
+
+my_bar = st.progress(0)
+
 
 st.header('THE BEST ANALYTICAL WEBSITE EVER')
 
@@ -58,6 +62,14 @@ def get_prices():
     return df_tickers
 
 
+for percent_complete in range(100):
+    time.sleep(0.02)
+    my_bar.progress(percent_complete + 1)
+
+
+st.balloons()
+
+
 def spreads():
     prices = get_prices()
     dict = {}
@@ -72,7 +84,7 @@ def spreads():
         biWW = (prices[i].loc['bi-weekly'] / prices[i].loc['weekly'] - 1) * 100
 
         dict[i] = {'biQ-Q': round(biQQ, 2), 'biQ-BW': round(biQBW, 2), 'biQ-W': round(biQW, 2), 'biW-W_RollOver': round(biWW, 2),
-                   'Q-BW': round(QBW, 2), 'Q-W': round(QW, 2)}
+                  'Q-BW': round(QBW, 2), 'Q-W': round(QW, 2)}
 
     return pd.DataFrame.from_dict(dict, orient='index')
 
