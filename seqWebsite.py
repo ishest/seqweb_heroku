@@ -8,7 +8,6 @@ markets = okex.fetch_markets()
 
 my_bar = st.progress(0)
 
-
 st.header('THE BEST ANALYTICAL WEBSITE EVER')
 
 
@@ -88,7 +87,7 @@ def spreads():
 
 spread = spreads()
 btc_spread = pd.DataFrame(spread.loc['BTC']).T
-
+st.text('BTC price: ' + str(okex.fetch_ticker('BTC/USDC')['last']))
 st.table(btc_spread)
 
 st.table(spread.style.highlight_max())
