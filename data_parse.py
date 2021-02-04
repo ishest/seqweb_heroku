@@ -1,6 +1,8 @@
 import pandas as pd
 import ccxt
 import datetime
+import schedule
+import time
 
 okex = ccxt.okex({'type': 'futures'})
 markets = okex.fetch_markets()
@@ -82,3 +84,9 @@ def get_prices_in_file():
 
         except:
             print('no data')
+
+
+schedule.every(20).minutes.do(get_prices_in_file)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
