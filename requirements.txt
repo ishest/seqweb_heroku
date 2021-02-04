@@ -74,6 +74,7 @@ python-dateutil==2.8.1
 pytz==2020.5
 pyzmq==21.0.0
 requests==2.25.1
+schedule==1.0.0
 seaborn==0.11.1
 Send2Trash==1.5.0
 six==1.15.0
