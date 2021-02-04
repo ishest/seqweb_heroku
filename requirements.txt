@@ -52,7 +52,7 @@ notebook==6.2.0
 numpy==1.19.5
 openpyxl==3.0.6
 packaging==20.8
-pandas
+pandas==1.2.0
 pandocfilters==1.4.3
 parso==0.8.1
 pexpect==4.8.0
@@ -93,3 +93,4 @@ webencodings==0.5.1
 widgetsnbextension==3.5.1
 xlrd==2.0.1
 yarl==1.1.0
+yfinance==0.1.55
