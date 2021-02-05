@@ -74,6 +74,7 @@ def sum_prices():
 
 
 def get_prices_in_file():
+    print('Hello, I am running the process')
     for i in sum_prices():
         try:
             df = pd.read_csv('price_data/' + i + '.csv', index_col=0)
