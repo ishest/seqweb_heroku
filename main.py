@@ -22,8 +22,6 @@ if __name__ == '__main__':
     st.table(btc_spread)
 
     st.table(spreads.style.highlight_max())
-    df = pd.DataFrame(columns='test')
-    df.to_csv('test.csv')
 
     if st.button('Show Plots'):
         st.header('BTC Spreads')
