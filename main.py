@@ -19,9 +19,9 @@ if __name__ == '__main__':
 
     btc_spread = pd.DataFrame(spreads.loc['BTC']).T
     st.text('BTC price: ' + str(okex.fetch_ticker('BTC/USDC')['last']))
-    st.table(btc_spread)
+    st.table(btc_spread.style.format("{:.2%}"))
 
-    st.table(spreads.style.highlight_max())
+    st.table(spreads.style.highlight_max('lightyellow').highlight_min(color='lightgreen').format("{:.2%}"))
 
     if st.button('Show Plots'):
         st.header('BTC Spreads')
