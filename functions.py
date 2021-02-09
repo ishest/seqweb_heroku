@@ -84,7 +84,7 @@ def spreads():
         dict[i] = {'biQ-Q': round(biQQ, 2), 'biQ-BW': round(biQBW, 2), 'biQ-W': round(biQW, 2), 'biW-W_RollOver': round(biWW, 2),
                   'Q-BW': round(QBW, 2), 'Q-W': round(QW, 2)}
 
-    return pd.DataFrame.from_dict(dict, orient='index').round(decimals=2)
+    return pd.DataFrame.from_dict(dict, orient='index').round(2)
 
 
 def btc_spread_df():
@@ -101,7 +101,7 @@ def btc_spread_df():
     btc_spread['Q-W'] = round((btc.Q / btc.W - 1) * 100, 2)
     btc_spread.index = pd.DatetimeIndex(btc_spread.index)
 
-    return btc_spread.round(decimals=2)
+    return btc_spread.round(2)
 
 
 def plot_chart():
