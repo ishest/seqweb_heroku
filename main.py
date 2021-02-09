@@ -21,7 +21,7 @@ if __name__ == '__main__':
     st.text('BTC price: ' + str(okex.fetch_ticker('BTC/USDC')['last']))
     st.table(btc_spread.style.format("{:.2%}"))
 
-    st.table(spreads.style.highlight_max('lightyellow').highlight_min(color='lightgreen').format("{:.2%}"))
+    st.table(spreads.style.highlight_max().highlight_min(color='lightgreen').format("{:.2%}"))
 
     if st.button('Show Plots'):
         st.header('BTC Spreads')
