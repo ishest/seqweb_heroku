@@ -93,12 +93,12 @@ def btc_spread_df():
     btc.drop(columns='Unnamed: 0', inplace=True)
 
     btc_spread = pd.DataFrame(columns=['biQ-Q', 'biQ-biW', 'biQ-W', 'biW-W', 'Q-biW', 'Q-W'])
-    btc_spread['biQ-Q'] = (btc.biQ / btc.Q - 1) * 100
-    btc_spread['biQ-biW'] = (btc.biQ / btc.biW - 1) * 100
-    btc_spread['biQ-W'] = (btc.biQ / btc.W - 1) * 100
-    btc_spread['biW-W'] = (btc.biW / btc.W - 1) * 100
-    btc_spread['Q-biW'] = (btc.Q / btc.biW-1) * 100
-    btc_spread['Q-W'] = (btc.Q / btc.W - 1) * 100
+    btc_spread['biQ-Q'] = round((btc.biQ / btc.Q - 1) * 100, 2)
+    btc_spread['biQ-biW'] = round((btc.biQ / btc.biW - 1) * 100, 2)
+    btc_spread['biQ-W'] = round((btc.biQ / btc.W - 1) * 100, 2)
+    btc_spread['biW-W'] = round((btc.biW / btc.W - 1) * 100, 2)
+    btc_spread['Q-biW'] = round((btc.Q / btc.biW-1) * 100, 2)
+    btc_spread['Q-W'] = round((btc.Q / btc.W - 1) * 100, 2)
     btc_spread.index = pd.DatetimeIndex(btc_spread.index)
 
     return btc_spread
