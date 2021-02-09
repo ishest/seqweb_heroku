@@ -72,8 +72,8 @@ def spreads():
     prices = get_prices()
     dict = {}
     for i in prices:
-        biQQ = round((prices[i].loc['bi-quarter'] / prices[i].loc['quarter'] - 1) * 100, 2)
-        biQBW = round((prices[i].loc['bi-quarter'] / prices[i].loc['bi-weekly'] - 1) * 100, 2)
+        biQQ = (prices[i].loc['bi-quarter'] / prices[i].loc['quarter'] - 1) * 100
+        biQBW = (prices[i].loc['bi-quarter'] / prices[i].loc['bi-weekly'] - 1) * 100
         biQW = (prices[i].loc['bi-quarter'] / prices[i].loc['weekly'] - 1) * 100
 
         QBW = (prices[i].loc['quarter'] / prices[i].loc['bi-weekly'] - 1) * 100
@@ -84,7 +84,7 @@ def spreads():
         dict[i] = {'biQ-Q': round(biQQ, 2), 'biQ-BW': round(biQBW, 2), 'biQ-W': round(biQW, 2), 'biW-W_RollOver': round(biWW, 2),
                   'Q-BW': round(QBW, 2), 'Q-W': round(QW, 2)}
 
-    return pd.DataFrame.from_dict(dict, orient='index')
+    return pd.DataFrame.from_dict(dict, orient='index').round(decimals=2)
 
 
 def btc_spread_df():
@@ -101,7 +101,7 @@ def btc_spread_df():
     btc_spread['Q-W'] = round((btc.Q / btc.W - 1) * 100, 2)
     btc_spread.index = pd.DatetimeIndex(btc_spread.index)
 
-    return btc_spread
+    return btc_spread.round(decimals=2)
 
 
 def plot_chart():
