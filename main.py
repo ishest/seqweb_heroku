@@ -11,7 +11,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 okex = ccxt.okex({'type': 'futures'})
 markets = okex.fetch_markets()
 
-st.header('THE BEST ANALYTICAL WEBSITE EVER')
+st.header('SQT Cap Analytical data')
 
 if __name__ == '__main__':
 
